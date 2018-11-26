@@ -1,5 +1,12 @@
 import random
 
+#a basic tic-tac-toe program was provided to us. we were tasked with:
+#1) Print an appropriate message when either the human or the machine wins.
+#2) Accept both upper case and lower case letters to indicate the row and column
+#3) Shorten the print board function by using loops
+#4) Use a dictionary to find the meaning of the letters T, M, B, L, R when they are entered.
+#5) Use a better scheme for helping the machine choose its play.
+
 def index2location(i): #0 <= i <= 8
   if type(i) != type(1):
     raise TypeError
