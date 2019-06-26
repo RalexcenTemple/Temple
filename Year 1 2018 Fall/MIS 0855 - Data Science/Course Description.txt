@@ -1,1 +1,8 @@
-We are all drowning in data, and so is your future employer. Data pour in from sources as diverse as social media, customer loyalty programs, weather stations, smartphones, and credit card purchases. How can you make sense of it all? Those that can turn raw data into insight will be tomorrow's decision-makers; those that can solve problems and communicate using data will be tomorrow's leaders. This course will teach you how to harness the power of data by mastering the ways it is stored, organized, and analyzed to enable better decisions. You will get hands-on experience by solving problems using a variety of powerful, computer-based data tools virtually every organization uses. You will also learn to make more impactful and persuasive presentations by learning the key principles of presenting data visually. NOTE: This course fulfills a Science & Technology (GS) requirement for students under GenEd.
+We are all drowning in data, and so is your future employer. Data pour in from sources as diverse as social media,
+ customer loyalty programs, weather stations, smartphones, and credit card purchases. How can you make sense of it all?
+ Those that can turn raw data into insight will be tomorrow's decision-makers; those that can solve problems and communicate
+ using data will be tomorrow's leaders. This course will teach you how to harness the power of data by mastering the
+ ways it is stored, organized, and analyzed to enable better decisions. You will get hands-on experience by solving 
+problems using a variety of powerful, computer-based data tools virtually every organization uses. You will also learn 
+to make more impactful and persuasive presentations by learning the key principles of presenting data visually. 
+NOTE: This course fulfills a Science & Technology (GS) requirement for students under GenEd.
