@@ -1,0 +1,167 @@
+READ ME
+
+This is the Operator Manual for my simple shell program
+
+After the makefile has been run and the myshell program begins running, the shell becomes operable.
+
+getting started:
+
+	The shell provides an environment within the system to allow navigation and manipulation of files and directories.
+	
+	Initially, the shell will present the user with a prompt displaying the current position in the system and a '>' character.
+		from here the user can enter a command to tell the shell to complete a task for the user. The commands that the
+		shell can accept are:
+
+			cd		:	Change Directory
+			clr		:	Clear
+			dir		:	Directory Contents
+			environ		:	Environment Contents
+			echo		:	Echo Input
+			help		:	Provide User Help
+			pause		:	Pause Shell
+			quit/exit	:	Quit Shell
+	
+	Along with these commands there are also redirection options for input and output included in the shell. These redirection
+		options are as follows:
+			
+			>	:	Output to
+			<	:	Input to
+			|	:	Pipe
+
+	Lastly there is the option to run programs in the background. this option is accessed with the following:
+
+			&	:	Run in Background
+
+
+	These commands and redirection options are common to most shells but are explained in further depth bellow.
+
+
+
+cd : Change Directory
+
+	cd provides the functionality of checking the current directory or changing the current working directory to a new directory.
+		This cannot be redirected.
+		
+		ex 1: The bellow command will provide the current working directory as no other arguments were provided for the command
+			>cd 
+		
+		ex 2: The bellow command will change the current working directory to 'lowerDirectory', which since it is not an absolute
+			path, is hopefully in the same directory as the current working directory.
+			>cd lowerDirectory
+		
+		ex 3: The bellow command will change the current working directory to /abs/path/newCWD as cd uses the absolute path to find
+			the directory 'newCWD' at the path '/abs/path/'
+
+
+clr : Clear
+	
+	clr provides the functionality of displaying a fresh, characterless screen with just the shell prompt, to help readability if 
+		too much is on the screen. This cannot be redirected.
+
+		ex 1: The following command is the only use of the clr function, it takes no arguments. the previous output can still be 
+			found by scrolling up.
+		
+
+dir : Directory Contents
+
+	dir provides the functionality of printing the contents of a directory to stdout(most often the screen). The contents of the current
+		directory or a directory from an absolute path can be printed using this command from anywhere in the system. 
+		This can be used with redirection.
+
+		ex 1: The bellow command prints the contents of the current directory since no arguments were given to dir.
+			>dir
+
+		ex 2: The bellow command prints the contents of the directory found at the local or absolute path given to dir.
+			(local)
+			>dir someDirectory			
+
+			(abs)
+			>dir /abs/path/someDirectory
+
+		ex 3: Redirection (the directory contents are piped out to echo who writes them to a.out)
+			>dir | echo > a.out
+
+
+environ	: Environment Contents
+
+	environ provides the functionality of printing the contents of the environment variable to stdout(screen), this command takes no arguements.
+		This command can be redirected.
+		
+		ex 1: The bellow command prints the environment variables of the current shell instance.
+			>environ
+
+		ex 2: Redirection (the environment varaibles are writen to a.out by echo after echo recieves the text from environ)
+			>environ > echo > a.out
+
+
+echo : Echo Input
+	
+	echo provides the functionality of printing whatever the input is to echo to the stdout. This does support redirection.
+		
+		ex 1: The bellow command prints hello world, as a result of that being the input for the command.
+			>echo hello world
+
+		ex 2: Redirection (the environment varaibles are writen to a.out by echo after echo recieves the text from environ)
+			>environ > echo > a.out
+
+
+help : Provide User Help
+
+	help provides the functionality of printing a simple user manual while using the shell itself to help with usage issues immediately.
+		It takes no arguments. this does not support redirection.
+
+		ex 1: The bellow command prints the help information to stdout.
+			>help
+			
+
+pause : Pause Shell
+	
+	pause provides the functionality of pausing the shell from other processes until further input tells the shell to continue.
+		It takes no arguments, it does not support redirection.		
+
+		ex 1: The bellow command pauses the shell.
+			>pause
+	
+
+
+
+quit/exit : Quit Shell
+
+	quit/exit provides the functionality of quitting/exiting the shell in that the shell ends and returns the user the the shell it was
+		likely launched from. it does not take arguments, it does not support redirection.
+
+		ex 1: the bellow commands will exit/quit the shell.
+			(exit)
+			>exit
+
+			(quit)
+			>quit
+
+
+> : Output to
+
+	> provides the functionality of redirecting the output of one command to another file or program. the format is : [cmd] > [cmd/file] > ... .
+		If the file that the redirection happens to does not exist it is created. The data in the file is overwritten each time it is
+		written to. 
+		
+
+< : Input to
+
+	< provides the functionality of redirecting the input for a command or program from the keyboard to the contents of a file or the 
+		ouput from a command. the format is [cmd] < [cmd/file] < ... < [file]. 
+					
+					This redirection does not work in my shell.
+
+| : Pipe
+
+	| provides the functionality of redirecting the output of one program to be the input of another program. the format being : [cmd1] | [cmd2]
+		This sends the output of cmd1 to be the input for cmd2.
+
+					part of the redirection fails in my shell while performing this redirection.
+
+
+& : Run in Background
+
+	& provides the functionality of allowing the shell to continue taking commands from the user without having to wait for a process to
+		finish running. the format is to include it as the end of a command line : [cmd] someinput &. a command line prompt will immediatly
+		be printed to begin accepting input from the user.

@@ -1,0 +1,66 @@
+You are to create a document describing your problem solution, and program implementation and program documentation. This document 
+should also include your descriptions of testing methods and results of applying the tests. Submit this document along with your 
+assignment submission.
+
+I used the walk through provided in the pdf for the begining of my shell creation, starting with handling input from the user,
+	then catching internal commands from the user. After this I needed to get files opened from within the shell. Then building
+	the external utilities. each step im testing the implementation of each step as well as implementation of utility.
+		
+			cd I test by going up and down in directories as well as changing by absolute path. also checking
+				the environment variables with each change to make sure the appropriette changes are taking place.
+
+			dir I test by moving up and down in directories checking that dir provides the correct contents of the directory
+				that im in. Also checking that dir can handle absolute paths.
+
+			clr I tested by running the environ cmd a few times and the running clr, making sure to see that the screen got cleared.
+
+			pause I tested by running it and see that nothing else was happening during the time that it was pause, and that
+				I couldnt do anything in the shell until i left the paused state. I did not test pause with multiple processes running.
+
+			environ I tested by printing out the environment variables in the temple hosted shell and then printed the environment
+				variables using my shell and matched up that they were correct and the appropriette differences between the two were
+				present.
+	
+			echo I tested by having it print out some input that I would send it just by the command line.
+
+
+	In the case that the file that is entered in the command line is not present locally the program grabs all of the PATH environ variable
+		parses it by ':' characters and appends the file name to the end of the path name, then looking for the file at the new, full path name.
+
+		I tested this by using some different commands from local and non local location, each being completed without a difference between
+			end result.(such as between ls and dir)
+
+
+	The redirection gave me the most issues as im pretty sure my string parsing gets pretty messy by the time i got to that point.
+		Using the documentation provided to us I was able to get part of most of the redirection cases working. 
+
+			> I tested by having environ print out to a file or running dir > echo > filename.txt to check that succesive redirections
+				 would work
+
+			< I tested by trying to run input from a file to a cmd but had little luck to no luck. couldnt for the life of me figure it out
+				I think it has to do with the way im trying to read the information but im still not clear on it.
+
+			| I tested by running a command like environ | echo . this would result in the environment variables being printed twice to the
+				screen, which feels like its realated to my difficulties with the redirection in but i dont really see a connection.
+
+			& I tested by running a command with & at the end and seeing that a prompt would be printed wainting for input and then another
+				would be printed showing that the child completed running.
+
+I forgot to figure using a file as mutliple lines of input for this project, I threw some code in soon before typing this out that I think will work for it
+	but i ultimately am not testing it as I have gone well over the amount of time I can work on this and have a few other projects for different classes
+	to get to before monday.
+
+I didnt do the multiple processes at once implementation for [arg] & [arg] & [arg] format, in the document it only appears near the bottom and I am still 
+	learning to read the whole thing before finishing these assignments.
+
+I didnt do the PATH/SHELL command, its refered in different ways in different places but seems to have the same function, anyway environ prints out the 
+	same line you would get but just with like 20 others. I would just grab that string out of the environment variables but the documentation confused
+	me to much and gave up on it. To make clear: the shell path is included in the environment variables, theres just no way to print it out sigularly.
+
+I didnt do the >> implementation.
+
+The sample make files didnt really help me in making one to handle the other files I was needing to use for my program so I just looked up how to do it the way
+	I needed it to be done.
+
+I think you mean the c files when you say "source code" if not I apologize for what I've handed in.
+
