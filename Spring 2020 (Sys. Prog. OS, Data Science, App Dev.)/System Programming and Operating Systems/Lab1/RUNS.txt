@@ -1,0 +1,107 @@
+Runs Documentation:
+	7:42pm 2/11/20:(DES.c)
+		after getting the following output from a ton of printf lines woven within the code:
+			---ADDED JOB TO CPU WAIT---
+			JOB NAME: Job0 | JOB INTERVAL: 79
+			---END OF CPU WAIT---
+			------TIME : 7 |------
+			------TIME : 8 |------
+			------TIME : 9 |------
+			------TIME : 10 |------
+			------TIME : 11 |------
+			------TIME : 12 |------
+			------TIME : 13 |------
+			------TIME : 14 |------
+			------TIME : 15 |------
+			---PUSHED ANOTHER JOB ONTO EVENT QUEUE---
+			JOB NAME: Job1 | JOB INTERVAL: 15
+			JOB NAME: Job2 | JOB INTERVAL: 45
+			JOB NAME: simulation finished | JOB INTERVAL: 100000
+			---END OF EVENTS QUEUE--
+			---ADDED JOB TO CPU WAIT---
+			JOB NAME: Job1 | JOB INTERVAL: 57
+			JOB NAME: Job0 | JOB INTERVAL: 136
+			---END OF CPU WAIT---
+			------TIME : 16 |------
+			------TIME : 17 |------
+			------TIME : 18 |------
+			------TIME : 19 |------
+		I can see that Job0's interval time was correctly increased within the waiting queue as a result of Job1 now taking the space infront of it
+
+
+--------------
+
+	7:56pm :
+		While programming I momentarily decided to set all run over times to the (finish time - 1) but decided against it as some processes that weren't suppose to run did
+			and then the ratio of jobs completed at each component could be off. (in this case the finish time was set to 100)
+------TIME : 96 |------
+------TIME : 97 |------
+BEFORE CREATING CHECK
+THE CPU EXIT CHECK IS: 84
+DISKWAIT1 LENGTH: 0
+DISKWAIT2 LENGTH: 0
+DISKS ARE EQUAL, COINFILIP TIME!
+ADDED JOB TO DISK2WAIT
+JOB NAME: Job4 | JOB INTERVAL: 99
+--------
+------TIME : 98 |------
+------TIME : 99 |------
+BEFORE CREATING CHECK
+THE CPU EXIT CHECK IS: 80
+DISKWAIT1 LENGTH: 0
+DISKWAIT2 LENGTH: 0
+DISKS ARE EQUAL, COINFILIP TIME!
+ADDED JOB TO DISK1WAIT
+JOB NAME: Job2 | JOB INTERVAL: 99
+JOB NAME: Job3 | JOB INTERVAL: 99
+--------
+-------------------
+
+	9:37pm :(lab1The3rd.c)
+		after a ton more troubleshooting for the values of the interval times as the jobs move throughout the system I've gotten the program atleast running without a segmentation fualt up to 500 cycles.
+		I'll likely include the paper I wrote on it but the wording for the implementation of the timing or the setting of the running time for each job is very difficult to follow as there is a lot of 
+			disyphering involved in understanding the intent of the directions. at this point im comfortable going through and correcting some structural errors with the code while recreating it in a 
+			new file again. This would be a great time for me to turn my pointer struct into a class possibly so I could clean up the file that im working on, but using vim in unix makes working with
+			multiple files that need to be tested difficult enough, let alone having to switch between the two if I need to make more edits.
+
+		Some of the issues I've learned to look for by this point:
+			- I'm running into a good number of segmentation fualts as a result of trying to access attributes of null queue objects, this has reminded me to use the isEmpty() function more this time
+			- As expected the crux of this is just keep track of a bunch of variables between a couple if statements within a while statement that runs for the duration that is set to FIN_TIME and so
+				also as expected the biggest difficulty is just keeping track of all the moving parts and the ways in which they are suppose to interact with each other at any given point in the
+				emulation.
+			- I still have worries over the actual function of "time" in this assignment, the documentation makes an effort to talk about an algorithm that could be used to understand how the system 
+				is suppose to work together:
+					1: set the 'current time' to the time of the event we just removed from the [event] queue
+					2: deternime the arrival time for the next job to enter the system and add it to the events queue
+					3: send the removed job to the cpu
+						+ The event that is being removed from the event queue is also the absolute first event to enter the system and so Im not sure if setting the current time to the time that this job
+							starts is true for all jobs or just the absolute first job to enter the system.
+
+---------------------
+	1:47am 2/12/20
+		I think i am starting to understand the use of the event queue and how its really controlling all the other components, this localizes the work needed to be done to properly move all the jobs 
+			around. Thought to only realize this now i am really kicking myself. My approach has been to add and adjust jobs to the queues based on the state of the queue rather than just the raw
+			processing of moving the jobs around. this also made understanding how the event queue is even suppose to fit into the flow of the jobs and it turned out the answer is not at all, from
+			what I understand the jobs should never enter the Event queue but rather they are reference and directed by the event queue
+
+		Thinking more on this, it would reason that jobs and events should be two different structures or maybe the time variable of the jobs could just be 0 but this still wouldnt leave enough variables
+			for events to hold both a time to run and an event/event code.
+
+-----------------------
+	1:00pm 
+		realizing the error in the thinking of the previous log, do the jobs even have a name or need a name? is it that theyre suppose to also contain a varaible to hold the coded event that they
+			are representing? my third go over of the code is now turning into a messy amalgumation of ideas that dont quite blend together. Im starting to think I should start from scratch again.
+
+-----------------------
+	5:44pm
+		After deciding that rebuilding with a new idea in mind was going to take too long and instead very sloppily threw in the functionality that is needed to do the lab the way i now understand it 
+			to be intended to be done. It's not exactly as it should be I imagine but the movement of the jobs and the logic behind their movement is all there.
+
+-----------------------
+	9:11pm
+		well it doesnt look very pretty but im pretty sure its doing what its suppose to be doing and the ratios between the sizes of the queues all add up to what they should be given each probability
+			
+		working on the other documents to submit now
+
+		didnt go to lab today since im more comfortable working on my desktop and knew i wouldnt have anything to demo until late tonight, my apologies for my absence 
+

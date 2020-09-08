@@ -1,0 +1,15 @@
+seed:        69420
+init_time:   0
+fin_time:    100000
+arrive_min:  5
+arrive_max:  50
+quit_prob:   20
+network_prob:50
+cpu_min:     10
+cpu_max:     50
+disk1_min:   50
+disk1_max:   250
+disk2_min:   50
+disk2_max:   250
+network_min: 250
+network_max: 1250
